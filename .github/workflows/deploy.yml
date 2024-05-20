@@ -7,9 +7,10 @@ on:
 
 jobs:
   publish-library:
+    name: Publish package to PyPI
     runs-on: ubuntu-latest
-    environment: release
     permissions:
+      contents: read
       id-token: write
 
     steps:
@@ -21,13 +22,5 @@ jobs:
           python-version: "3.12"
           cache: true
 
-      - name: Install dependencies
-        run: |
-          pdm install
-
-      - name: Build package distributions
-        run: |
-          pdm build
-
-      - name: Publish package distributions to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
+      - name: Publish to PyPI
+        run: pdm publish

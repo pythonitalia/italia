@@ -8,7 +8,7 @@ on:
 jobs:
   publish-library:
     runs-on: ubuntu-latest
-
+    environment: release
     permissions:
       id-token: write
 
@@ -21,16 +21,13 @@ jobs:
           python-version: "3.12"
           cache: true
 
-      - name: Ensure lock file is up to date
-        run: |
-          pdm lock --check
-
       - name: Install dependencies
         run: |
-          pdm sync -d
+          pdm install
 
-      - name: Build package
-        run: pdm build
+      - name: Build package distributions
+        run: |
+          pdm build
 
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1

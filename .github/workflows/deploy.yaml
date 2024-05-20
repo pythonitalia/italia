@@ -1,0 +1,45 @@
+name: Publish to PyPI
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish-library:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: pypi
+      url: https://pypi.org/p/italia
+
+    permissions:
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pdm-project/setup-pdm@v4
+        name: Setup Python and PDM
+        with:
+          python-version: "3.12"
+          cache: true
+
+      - name: Install dependencies
+        run: |
+          pdm install
+
+      - name: Ensure lock file is up to date
+        run: |
+          pdm lock --check
+
+      - name: Install dependencies
+        run: |
+          pdm sync -d
+
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1

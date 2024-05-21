@@ -6,8 +6,8 @@ Ernesto Arbitrio
 Ester Beltrami
 Fiorella De Luca
 Gionathan Desogus
-Juna Salvati
-Lerio Campanile
+Juna Salviati
+Lelio Campanile
 Marco Acierno
 Marco Beri
 Matteo Benci

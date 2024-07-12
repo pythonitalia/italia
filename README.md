@@ -15,6 +15,11 @@ creating something special!
 Italia. It's designed to amuse, surprise, and inspire future Pythonistas by sharing a
 bit of the magic of PyCon Italia with the community.
 
+## Disclamer!
+
+To make `from italia import 🤌` you need to compile and install CPython from:
+https://github.com/pythonitalia/cpython/pull/1
+
 ## 🚀 Installation
 
 To install the package, you can use any package manager.
